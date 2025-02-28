@@ -1,0 +1,190 @@
+/* Reset CSS */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Variables globales */
+:root {
+  --text-color: black;
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.2);
+  --highlight-color: rgba(255, 255, 255, 0.3);
+  --blur-strength: 10px;
+}
+
+/* Body avec fond et centrage */
+body {
+  background: url('Assets/pexels-kozymeii-kong-311910-950754.jpg') no-repeat center center/cover;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* Navbar fixée */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  z-index: 10;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  font-size: 1.25rem;
+  color: var(--text-color);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px);
+}
+
+/* Conteneur glassmorphism */
+.glass-container {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 480px;
+  margin: 5rem auto 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.profile { padding: 1rem; }
+
+.profile img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  transition: transform 0.3s;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.profile img:hover { transform: scale(1.1); }
+
+.profile h1 { font-size: 1.25rem; margin-top: 0.75rem; }
+
+.profile p { font-weight: 500; margin-top: 0.375rem; }
+
+.links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--stroke-color);
+  background: var(--surface-color);
+  border-radius: 8px;
+  backdrop-filter: blur(var(--blur-strength));
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  color: var(--text-color);
+  animation: bounce 4s ease-in-out infinite;
+}
+
+.links a:hover {
+  background: var(--surface-color-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  border: 2px solid var(--stroke-color);
+  background: var(--surface-color);
+  border-radius: 50%;
+  backdrop-filter: blur(var(--blur-strength));
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  color: var(--text-color);
+  animation: rotate 8s linear infinite;
+}
+
+.social-links a:hover {
+  background: var(--highlight-color);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.contact { padding: 1rem 0; font-size: 0.875rem; text-align: center; color: var(--text-color); }
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-3px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(3px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+  .glass-container { max-width: 400px; margin: 4rem auto 1.5rem; padding: 0.75rem; }
+  .profile img { width: 5rem; height: 5rem; }
+  .profile h1 { font-size: 1.125rem; }
+  .links a { padding: 0.625rem 1rem; font-size: 0.9375rem; }
+  .social-links a { padding: 0.625rem; }
+  .navbar { padding: 0.75rem 1rem; }
+  .nav-link { font-size: 1.125rem; padding: 0.5rem 1rem; }
+}
+
+@media (max-width: 480px) {
+  .glass-container { width: 85%; max-width: 320px; margin: 3.5rem auto 1rem; padding: 0.5rem; }
+  .profile img { width: 4rem; height: 4rem; }
+  .profile h1 { font-size: 1rem; }
+  .profile p { font-size: 0.875rem; }
+  .links a { padding: 0.5rem 0.75rem; font-size: 0.875rem; }
+  .social-links { gap: 0.5rem; }
+  .social-links a { padding: 0.5rem; }
+  .navbar { padding: 0.5rem; }
+  .nav-link { font-size: 1rem; padding: 0.375rem 0.75rem; }
+  /* Optimisation performance mobile */
+  .glass-container, .links a, .social-links a { backdrop-filter: none; background: rgba(255, 255, 255, 0.4); }
+}
