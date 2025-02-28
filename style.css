@@ -23,17 +23,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Navbar fixée */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 1rem 1.5rem;
-  text-align: center;
-  z-index: 10;
-}
-
 .nav-link {
   display: inline-block;
   padding: 0.625rem 1.25rem;
